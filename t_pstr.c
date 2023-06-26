@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <ctype.h>
 
 /**
  * _pstr - function that prints ascii value of elements
@@ -24,7 +25,7 @@ void _pstr(stack_t **hstack, unsigned int line_number)
 	{
 		while (top_node != NULL)
 		{
-			if ((top_node->n > 0) && (isascii(top_node->n)))
+			if ((top_node->n > 0) && (isprint(top_node->n)))
 			{
 				printf("%c", top_node->n);
 				top_node = top_node->next;

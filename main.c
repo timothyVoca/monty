@@ -1,4 +1,7 @@
 #include "monty.h"
+#include <stdio.h>
+
+FILE *file;
 
 /**
  * main - entry into interpreter
@@ -12,7 +15,7 @@ int main(int argc, char *argv[])
 	stack_t *head = NULL;
 	char  *str = NULL, *operator_array[2], *temp;
 	size_t bufsize = 1024, line_count = 0;
-	ssize_t _line;
+	char *_line;
 	void (*operator_function)(stack_t **hstack, unsigned int line_number);
 
 	if (argc != 2)
@@ -22,8 +25,8 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]), exit(EXIT_FAILURE);
 	while (1)
 	{
-		_line = getline(&str, &bufsize, file);
-		if (_line == -1)
+		_line = fgets(str, bufsize, file);
+		if (_line == NULL)
 			break;
 		line_count++;
 		operator_array[0] = strtok(str, "\n ");
