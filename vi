@@ -1,0 +1,35 @@
+#include "monty.h"
+
+/**
+ * _div - divide second node from top node
+ * @h: top of list
+ * @line_number: line of command
+ */
+void _div(stack_t **hstack, unsigned int line_number)
+{
+	stack_t *first, *second;
+
+	if ((*hstack == NULL) || ((*hstack)->next == NULL))
+	{
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+		fclose(file);
+		free(*hstack);
+		exit(EXIT_FAILURE);
+	}
+	else if ((*hstack)->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", line_number);
+		fclose(file);
+		t_free(*hstack);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		first = *hstack;
+		second = first->next;
+		second->n /= first->n;
+		*hstack = second;
+		(*hstack)->prev = NULL;
+		free(first);
+	}
+}
