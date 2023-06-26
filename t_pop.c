@@ -17,11 +17,11 @@ void _pop(stack_t **hstack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		fclose(file);
-		get_free(*hstack);
+		_free(*hstack);
 		exit(EXIT_FAILURE);
 	}
 	first = *hstack;
-	*hstack = (*stack)->next;
+	*hstack = (*hstack)->next;
 	if (first->next)
 	{
 		first->next->prev = NULL;

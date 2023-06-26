@@ -18,11 +18,11 @@ void _pchar(stack_t **hstack, unsigned int line_number)
 		_free(*hstack);
 		exit(EXIT_FAILURE);
 	}
-	if (!(isascii((*stack)->n)))
+	if (!(isascii((*hstack)->n)))
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		fclose(file);
 		exit(EXIT_FAILURE);
 	}
-	printf("%c\n", (*stack)->n);
+	printf("%c\n", (*hstack)->n);
 }

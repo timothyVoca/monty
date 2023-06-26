@@ -13,7 +13,7 @@ void _mod(stack_t **hstack, unsigned int line_number)
 {
 	stack_t *first, *second;
 
-	if ((*hstack == NULL) || ((*stack)->next == NULL))
+	if ((*hstack == NULL) || ((*hstack)->next == NULL))
 	{
 		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
 		fclose(file);

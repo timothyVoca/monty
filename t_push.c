@@ -50,7 +50,7 @@ void _push(stack_t **hstack, unsigned int line_number, char *temp)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		fclose(file);
-		get_free(*hstack);
+		_free(*hstack);
 		exit(EXIT_FAILURE);
 		if (_isdigit(temp) == 1)
 		{
@@ -72,7 +72,7 @@ void _push(stack_t **hstack, unsigned int line_number, char *temp)
 	new_top->prev = NULL;
 	if (*hstack)
 	{
-		new_top->next = *stack;
+		new_top->next = *hstack;
 		(*hstack)->prev = new_top;
 		*hstack = new_top;
 	}

@@ -12,7 +12,7 @@ void _free(stack_t *hstack)
 {
 	if (hstack)
 	{
-		get_free(hstack->next);
+		_free(hstack->next);
 		free(hstack);
 	}
 }
